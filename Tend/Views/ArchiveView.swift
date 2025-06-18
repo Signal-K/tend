@@ -2,7 +2,7 @@
 // ArchiveView.swift
 // Tend
 //
-// Created by Liam Arbuckle on 18/6/2025.
+// Updated by ChatGPT on 18/6/2025.
 //
 
 import SwiftUI
@@ -12,74 +12,160 @@ struct ArchiveProject: Identifiable, Decodable {
     let id: UUID?
     let name: String?
     let icon: String?
+}
 
-    enum CodingKeys: String, CodingKey {
-        case id, name, icon
-    }
+struct ArchiveGroup: Identifiable, Decodable {
+    let id: UUID?
+    let project_id: UUID?
+    let name: String?
+    let icon: String?
+}
+
+struct ArchiveTask: Identifiable, Decodable {
+    let id: UUID?
+    let group_id: UUID?
+    let title: String?
+    let notes: String?
 }
 
 struct ArchiveView: View {
     @State private var projects: [ArchiveProject] = []
+    @State private var groups: [ArchiveGroup] = []
+    @State private var tasks: [ArchiveTask] = []
     @State private var isLoading = false
     @State private var errorMessage: String?
 
     var body: some View {
         NavigationStack {
-            Group {
+            ScrollView {
                 if isLoading {
-                    ProgressView("Loading projects...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    ProgressView("Loading archive...")
+                        .padding()
                 } else if let errorMessage = errorMessage {
                     VStack(spacing: 16) {
-                        Text("Failed to load projects")
+                        Text("Failed to load archive")
                             .font(.headline)
                         Text(errorMessage)
                             .font(.caption)
                             .foregroundColor(.red)
                         Button("Retry") {
-                            Task { await loadProjects() }
+                            Task { await loadArchive() }
                         }
                         .buttonStyle(.bordered)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
                 } else if projects.isEmpty {
-                    Text("No projects found")
+                    Text("No archive data found.")
                         .foregroundColor(.secondary)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding()
                 } else {
-                    List(projects) { project in
-                        Label(project.name ?? "Unnamed Project", systemImage: project.icon ?? "folder")
+                    VStack(alignment: .leading, spacing: 24) {
+                        ForEach(projects) { project in
+                            NavigationLink(destination: ProjectDetailView(project: project)) {
+                                VStack(alignment: .leading, spacing: 12) {
+                                    HStack {
+                                        Image(systemName: project.icon ?? "folder")
+                                        Text(project.name ?? "Unnamed Project")
+                                            .font(.title2)
+                                            .bold()
+                                    }
+
+                                    let projectGroups = groups.filter { $0.project_id == project.id }
+                                    ForEach(projectGroups) { group in
+                                        VStack(alignment: .leading, spacing: 8) {
+                                            HStack {
+                                                Image(systemName: group.icon ?? "folder")
+                                                Text(group.name ?? "Unnamed Group")
+                                                    .font(.headline)
+                                            }
+
+                                            let groupTasks = tasks.filter { $0.group_id == group.id }
+                                            ForEach(groupTasks) { task in
+                                                VStack(alignment: .leading, spacing: 4) {
+                                                    HStack {
+                                                        Circle()
+                                                            .strokeBorder(Color.primary, lineWidth: 2)
+                                                            .frame(width: 16, height: 16)
+                                                        Text(task.title ?? "Untitled Task")
+                                                            .font(.body)
+                                                            .padding(.leading, 4)
+                                                    }
+                                                    if let notes = task.notes, !notes.isEmpty {
+                                                        Text(notes)
+                                                            .font(.caption)
+                                                            .foregroundColor(.secondary)
+                                                            .padding(.leading, 24)
+                                                    }
+                                                }
+                                                .padding(8)
+                                                .background(Color(UIColor.systemGray6))
+                                                .cornerRadius(8)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .stroke(Color.primary, lineWidth: 1)
+                                                )
+                                            }
+                                        }
+                                        .padding(.leading, 16)
+                                    }
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(12)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.primary, lineWidth: 2)
+                                )
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
-                    .listStyle(.plain)
-                    .navigationTitle("Projects")
-                    .refreshable {
-                        await loadProjects()
-                    }
+                    .padding()
                 }
             }
+            .navigationTitle("Archive")
             .task {
-                await loadProjects()
+                await loadArchive()
+            }
+            .refreshable {
+                await loadArchive()
             }
         }
     }
 
     @MainActor
-    func loadProjects() async {
+    func loadArchive() async {
         isLoading = true
         errorMessage = nil
         projects = []
+        groups = []
+        tasks = []
 
         do {
-            let response: [ArchiveProject] = try await supabase
+            projects = try await supabase
                 .from("projects")
                 .select("id,name,icon")
+                .order("name", ascending: true)
                 .execute()
                 .value
 
-            projects = response
+            groups = try await supabase
+                .from("task_groups")
+                .select("id,project_id,name,icon")
+                .order("name", ascending: true)
+                .execute()
+                .value
+
+            tasks = try await supabase
+                .from("tasks")
+                .select("id,group_id,title,notes")
+                .order("title", ascending: true)
+                .execute()
+                .value
+
         } catch {
             errorMessage = error.localizedDescription
-            print("Error loading projects:", error)
+            print("Error loading archive:", error)
         }
 
         isLoading = false

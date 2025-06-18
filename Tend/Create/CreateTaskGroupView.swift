@@ -53,6 +53,7 @@ struct CreateTaskGroupView: View {
         defer { isLoading = false }
 
         do {
+            // Insert and return the inserted record directly
             let response = try await supabase
                 .from("task_groups")
                 .insert(
@@ -64,15 +65,16 @@ struct CreateTaskGroupView: View {
                     ],
                     returning: .representation
                 )
-                .select()
                 .single()
                 .execute()
 
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: response.value ?? [:]),
-                  let insertedGroup = try? JSONDecoder().decode(TaskGroupResponse.self, from: jsonData) else {
-                onError("Failed to decode task group response.")
+            guard let dict = response.value as? [String: Any] else {
+                onError("Invalid response data format.")
                 return
             }
+
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+            let insertedGroup = try JSONDecoder().decode(TaskGroupResponse.self, from: jsonData)
 
             input.id = insertedGroup.id
             onSuccess()

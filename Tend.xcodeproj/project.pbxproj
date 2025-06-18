@@ -33,6 +33,7 @@
 		B538AA8D2E02787300D2E018 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA8C2E02787300D2E018 /* Tests.swift */; };
 		B538AA8F2E02806700D2E018 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA8E2E02806700D2E018 /* HomeView.swift */; };
 		B538AA912E0283FD00D2E018 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA902E0283FD00D2E018 /* ArchiveView.swift */; };
+		B538AA942E0317E800D2E018 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA932E0317E800D2E018 /* ProjectDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		B538AA8C2E02787300D2E018 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		B538AA8E2E02806700D2E018 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B538AA902E0283FD00D2E018 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		B538AA932E0317E800D2E018 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 		B538AA7D2E02208100D2E018 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B538AA922E0317DE00D2E018 /* Projects */,
 				B538AA7E2E02208900D2E018 /* AppView.swift */,
 				B538AA802E02237A00D2E018 /* OnboardingView.swift */,
 				B538AA8E2E02806700D2E018 /* HomeView.swift */,
@@ -224,6 +227,14 @@
 				B538AA8C2E02787300D2E018 /* Tests.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		B538AA922E0317DE00D2E018 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				B538AA932E0317E800D2E018 /* ProjectDetailView.swift */,
+			);
+			path = Projects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +386,7 @@
 				B538AA6E2E02199600D2E018 /* Supabase.swift in Sources */,
 				B538AA772E021CCD00D2E018 /* Theme.swift in Sources */,
 				B538AA752E021B1300D2E018 /* AuthView.swift in Sources */,
+				B538AA942E0317E800D2E018 /* ProjectDetailView.swift in Sources */,
 				B538AA912E0283FD00D2E018 /* ArchiveView.swift in Sources */,
 				B538AA7F2E02208900D2E018 /* AppView.swift in Sources */,
 				B538AA792E021D6700D2E018 /* ProfileView.swift in Sources */,
