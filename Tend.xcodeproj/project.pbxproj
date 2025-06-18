@@ -8,12 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		B538AA2D2E0217BF00D2E018 /* TendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA2C2E0217BF00D2E018 /* TendApp.swift */; };
-		B538AA2F2E0217BF00D2E018 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA2E2E0217BF00D2E018 /* ContentView.swift */; };
 		B538AA312E0217C000D2E018 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B538AA302E0217C000D2E018 /* Assets.xcassets */; };
 		B538AA342E0217C000D2E018 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B538AA332E0217C000D2E018 /* Preview Assets.xcassets */; };
 		B538AA3E2E0217C000D2E018 /* TendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA3D2E0217C000D2E018 /* TendTests.swift */; };
 		B538AA482E0217C000D2E018 /* TendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA472E0217C000D2E018 /* TendUITests.swift */; };
 		B538AA4A2E0217C000D2E018 /* TendUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA492E0217C000D2E018 /* TendUITestsLaunchTests.swift */; };
+		B538AA582E02195500D2E018 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = B538AA572E02195500D2E018 /* Auth */; };
+		B538AA5A2E02195500D2E018 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = B538AA592E02195500D2E018 /* Functions */; };
+		B538AA5C2E02195500D2E018 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = B538AA5B2E02195500D2E018 /* PostgREST */; };
+		B538AA5E2E02195500D2E018 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = B538AA5D2E02195500D2E018 /* Realtime */; };
+		B538AA602E02195500D2E018 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = B538AA5F2E02195500D2E018 /* Storage */; };
+		B538AA6E2E02199600D2E018 /* Supabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA6D2E02199600D2E018 /* Supabase.swift */; };
+		B538AA722E021AF700D2E018 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = B538AA712E021AF700D2E018 /* Supabase */; };
+		B538AA752E021B1300D2E018 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA742E021B1300D2E018 /* AuthView.swift */; };
+		B538AA772E021CCD00D2E018 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA762E021CCD00D2E018 /* Theme.swift */; };
+		B538AA792E021D6700D2E018 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA782E021D6700D2E018 /* ProfileView.swift */; };
+		B538AA7C2E02206400D2E018 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA7B2E02206400D2E018 /* Models.swift */; };
+		B538AA7F2E02208900D2E018 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA7E2E02208900D2E018 /* AppView.swift */; };
+		B538AA812E02237A00D2E018 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA802E02237A00D2E018 /* OnboardingView.swift */; };
+		B538AA842E0274A000D2E018 /* CreateProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA832E0274A000D2E018 /* CreateProjectView.swift */; };
+		B538AA862E02758F00D2E018 /* CreateTaskGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA852E02758F00D2E018 /* CreateTaskGroupView.swift */; };
+		B538AA882E0275AC00D2E018 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA872E0275AC00D2E018 /* CreateTaskView.swift */; };
+		B538AA8B2E0277AD00D2E018 /* BottomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA8A2E0277AD00D2E018 /* BottomNavigation.swift */; };
+		B538AA8D2E02787300D2E018 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA8C2E02787300D2E018 /* Tests.swift */; };
+		B538AA8F2E02806700D2E018 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA8E2E02806700D2E018 /* HomeView.swift */; };
+		B538AA912E0283FD00D2E018 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA902E0283FD00D2E018 /* ArchiveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +55,6 @@
 /* Begin PBXFileReference section */
 		B538AA292E0217BF00D2E018 /* Tend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B538AA2C2E0217BF00D2E018 /* TendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendApp.swift; sourceTree = "<group>"; };
-		B538AA2E2E0217BF00D2E018 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B538AA302E0217C000D2E018 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B538AA332E0217C000D2E018 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B538AA392E0217C000D2E018 /* TendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +62,20 @@
 		B538AA432E0217C000D2E018 /* TendUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TendUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B538AA472E0217C000D2E018 /* TendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendUITests.swift; sourceTree = "<group>"; };
 		B538AA492E0217C000D2E018 /* TendUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B538AA6D2E02199600D2E018 /* Supabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supabase.swift; sourceTree = "<group>"; };
+		B538AA742E021B1300D2E018 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		B538AA762E021CCD00D2E018 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B538AA782E021D6700D2E018 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B538AA7B2E02206400D2E018 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		B538AA7E2E02208900D2E018 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		B538AA802E02237A00D2E018 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B538AA832E0274A000D2E018 /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
+		B538AA852E02758F00D2E018 /* CreateTaskGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskGroupView.swift; sourceTree = "<group>"; };
+		B538AA872E0275AC00D2E018 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
+		B538AA8A2E0277AD00D2E018 /* BottomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigation.swift; sourceTree = "<group>"; };
+		B538AA8C2E02787300D2E018 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		B538AA8E2E02806700D2E018 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B538AA902E0283FD00D2E018 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +83,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B538AA5C2E02195500D2E018 /* PostgREST in Frameworks */,
+				B538AA5A2E02195500D2E018 /* Functions in Frameworks */,
+				B538AA722E021AF700D2E018 /* Supabase in Frameworks */,
+				B538AA582E02195500D2E018 /* Auth in Frameworks */,
+				B538AA602E02195500D2E018 /* Storage in Frameworks */,
+				B538AA5E2E02195500D2E018 /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +116,7 @@
 				B538AA3C2E0217C000D2E018 /* TendTests */,
 				B538AA462E0217C000D2E018 /* TendUITests */,
 				B538AA2A2E0217BF00D2E018 /* Products */,
+				B538AA702E021AF700D2E018 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,10 +133,16 @@
 		B538AA2B2E0217BF00D2E018 /* Tend */ = {
 			isa = PBXGroup;
 			children = (
+				B538AA892E02779F00D2E018 /* Layout */,
+				B538AA822E02747700D2E018 /* Create */,
+				B538AA7D2E02208100D2E018 /* Views */,
+				B538AA7A2E02205C00D2E018 /* Models */,
+				B538AA732E021B0A00D2E018 /* Authentication */,
 				B538AA2C2E0217BF00D2E018 /* TendApp.swift */,
-				B538AA2E2E0217BF00D2E018 /* ContentView.swift */,
 				B538AA302E0217C000D2E018 /* Assets.xcassets */,
 				B538AA322E0217C000D2E018 /* Preview Content */,
+				B538AA6D2E02199600D2E018 /* Supabase.swift */,
+				B538AA762E021CCD00D2E018 /* Theme.swift */,
 			);
 			path = Tend;
 			sourceTree = "<group>";
@@ -127,6 +172,60 @@
 			path = TendUITests;
 			sourceTree = "<group>";
 		};
+		B538AA702E021AF700D2E018 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B538AA732E021B0A00D2E018 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B538AA742E021B1300D2E018 /* AuthView.swift */,
+				B538AA782E021D6700D2E018 /* ProfileView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		B538AA7A2E02205C00D2E018 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B538AA7B2E02206400D2E018 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B538AA7D2E02208100D2E018 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B538AA7E2E02208900D2E018 /* AppView.swift */,
+				B538AA802E02237A00D2E018 /* OnboardingView.swift */,
+				B538AA8E2E02806700D2E018 /* HomeView.swift */,
+				B538AA902E0283FD00D2E018 /* ArchiveView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B538AA822E02747700D2E018 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				B538AA832E0274A000D2E018 /* CreateProjectView.swift */,
+				B538AA852E02758F00D2E018 /* CreateTaskGroupView.swift */,
+				B538AA872E0275AC00D2E018 /* CreateTaskView.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		B538AA892E02779F00D2E018 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B538AA8A2E0277AD00D2E018 /* BottomNavigation.swift */,
+				B538AA8C2E02787300D2E018 /* Tests.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,8 +240,17 @@
 			buildRules = (
 			);
 			dependencies = (
+				B538AA622E02196200D2E018 /* PBXTargetDependency */,
 			);
 			name = Tend;
+			packageProductDependencies = (
+				B538AA572E02195500D2E018 /* Auth */,
+				B538AA592E02195500D2E018 /* Functions */,
+				B538AA5B2E02195500D2E018 /* PostgREST */,
+				B538AA5D2E02195500D2E018 /* Realtime */,
+				B538AA5F2E02195500D2E018 /* Storage */,
+				B538AA712E021AF700D2E018 /* Supabase */,
+			);
 			productName = Tend;
 			productReference = B538AA292E0217BF00D2E018 /* Tend.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +323,9 @@
 				Base,
 			);
 			mainGroup = B538AA202E0217BF00D2E018;
+			packageReferences = (
+				B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			productRefGroup = B538AA2A2E0217BF00D2E018 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +368,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B538AA2F2E0217BF00D2E018 /* ContentView.swift in Sources */,
+				B538AA842E0274A000D2E018 /* CreateProjectView.swift in Sources */,
+				B538AA8F2E02806700D2E018 /* HomeView.swift in Sources */,
+				B538AA862E02758F00D2E018 /* CreateTaskGroupView.swift in Sources */,
+				B538AA8B2E0277AD00D2E018 /* BottomNavigation.swift in Sources */,
+				B538AA6E2E02199600D2E018 /* Supabase.swift in Sources */,
+				B538AA772E021CCD00D2E018 /* Theme.swift in Sources */,
+				B538AA752E021B1300D2E018 /* AuthView.swift in Sources */,
+				B538AA912E0283FD00D2E018 /* ArchiveView.swift in Sources */,
+				B538AA7F2E02208900D2E018 /* AppView.swift in Sources */,
+				B538AA792E021D6700D2E018 /* ProfileView.swift in Sources */,
+				B538AA812E02237A00D2E018 /* OnboardingView.swift in Sources */,
+				B538AA882E0275AC00D2E018 /* CreateTaskView.swift in Sources */,
 				B538AA2D2E0217BF00D2E018 /* TendApp.swift in Sources */,
+				B538AA8D2E02787300D2E018 /* Tests.swift in Sources */,
+				B538AA7C2E02206400D2E018 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +415,10 @@
 			isa = PBXTargetDependency;
 			target = B538AA282E0217BF00D2E018 /* Tend */;
 			targetProxy = B538AA442E0217C000D2E018 /* PBXContainerItemProxy */;
+		};
+		B538AA622E02196200D2E018 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B538AA612E02196200D2E018 /* Supabase */;
 		};
 /* End PBXTargetDependency section */
 
@@ -582,6 +710,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B538AA572E02195500D2E018 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		B538AA592E02195500D2E018 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		B538AA5B2E02195500D2E018 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		B538AA5D2E02195500D2E018 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		B538AA5F2E02195500D2E018 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		B538AA612E02196200D2E018 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		B538AA712E021AF700D2E018 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B538AA562E02195500D2E018 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B538AA212E0217BF00D2E018 /* Project object */;
 }
