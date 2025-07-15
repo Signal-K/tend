@@ -17,18 +17,18 @@ struct AuthView: View {
 
     var body: some View {
         ZStack {
-            Color.backgroundWhite.ignoresSafeArea()
+//            Color.backgroundWhite.ignoresSafeArea()
 
             VStack(spacing: 32) {
                 VStack(spacing: 12) {
                     Text("Tend")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.gardenGreen)
+//                        .foregroundColor(.gardenGreen)
 
                     Text(isSignUp ? "Create your account" : "Grow your focus")
                         .font(.subheadline)
-                        .foregroundColor(.textPrimary)
+//                        .foregroundColor(.textPrimary)
                 }
 
                 VStack(spacing: 16) {
@@ -38,28 +38,28 @@ struct AuthView: View {
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .padding()
-                        .background(Color.surfaceGray)
+//                        .background(Color.surfaceGray)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gardenGreen, lineWidth: 1.5)
+//                                .stroke(Color.gardenGreen, lineWidth: 1.5)
                         )
 
                     SecureField("Password", text: $password)
                         .textContentType(.password)
                         .padding()
-                        .background(Color.surfaceGray)
+//                        .background(Color.surfaceGray)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gardenGreen, lineWidth: 1.5)
+//                                .stroke(Color.gardenGreen, lineWidth: 1.5)
                         )
 
                     Button(action: authButtonTapped) {
                         HStack {
                             if isLoading {
                                 ProgressView()
-                                    .tint(.gardenGreen)
+//                                    .tint(.gardenGreen)
                             } else {
                                 Text(isSignUp ? "Sign Up" : "Sign In")
                                     .fontWeight(.semibold)
@@ -67,10 +67,10 @@ struct AuthView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.backgroundWhite)
+//                        .background(Color.backgroundWhite)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gardenGreen, lineWidth: 2)
+//                                .stroke(Color.gardenGreen, lineWidth: 2)
                         )
                     }
                     .disabled(email.isEmpty || password.isEmpty || isLoading)
@@ -78,7 +78,7 @@ struct AuthView: View {
                     Button(action: { isSignUp.toggle() }) {
                         Text(isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up")
                             .font(.footnote)
-                            .foregroundColor(.gardenGreen)
+//                            .foregroundColor(.gardenGreen)
                             .underline()
                     }
                     .padding(.top, 8)
@@ -89,14 +89,14 @@ struct AuthView: View {
                         switch result {
                         case .success:
                             Text(isSignUp ? "🌱 Account created!" : "🌿 Signed in successfully!")
-                                .foregroundColor(.gardenGreen)
+//                                .foregroundColor(.gardenGreen)
                         case .failure(let error):
                             Text(error.localizedDescription)
-                                .foregroundColor(.red)
+//                                .foregroundColor(.red)
                         }
                     }
                     .padding()
-                    .background(Color.surfaceGray)
+//                    .background(Color.surfaceGray)
                     .cornerRadius(8)
                 }
 

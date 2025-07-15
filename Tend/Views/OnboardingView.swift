@@ -14,43 +14,43 @@ struct OnboardingView: View {
             ProgressView(value: Double(currentStep), total: 3)
                 .padding()
 
-            Group {
-                switch currentStep {
-                case 1:
-                    CreateProjectView(input: $project) {
-                        self.currentStep += 1
-                    } onError: { err in
-                        self.error = err
-                    }
-
-                case 2:
-                    CreateTaskGroupView(input: $group, projectId: project.id ?? "") {
-                        self.currentStep += 1
-                    } onError: { err in
-                        self.error = err
-                    }
-
-                case 3:
-                    CreateTaskView(input: $task, groupId: group.id ?? "") {
-                        self.currentStep += 1
-                    } onError: { err in
-                        self.error = err
-                    }
-
-                default:
-                    VStack(spacing: 16) {
-                        Text("🎉 You're all set!")
-                            .font(.title)
-                        Button("Restart Onboarding") {
-                            resetOnboarding()
-                        }
-                        .padding()
-                        .background(Color.gardenGreen)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                    }
-                }
-            }
+//            Group {
+//                switch currentStep {
+//                case 1:
+//                    CreateProjectView(input: $project) {
+//                        self.currentStep += 1
+//                    } onError: { err in
+//                        self.error = err
+//                    }
+//
+//                case 2:
+//                    CreateTaskGroupView(input: $group, projectId: project.id ?? "") {
+//                        self.currentStep += 1
+//                    } onError: { err in
+//                        self.error = err
+//                    }
+//
+//                case 3:
+//                    CreateTaskView(input: $task, groupId: group.id ?? "") {
+//                        self.currentStep += 1
+//                    } onError: { err in
+//                        self.error = err
+//                    }
+//
+//                default:
+//                    VStack(spacing: 16) {
+//                        Text("🎉 You're all set!")
+//                            .font(.title)
+//                        Button("Restart Onboarding") {
+//                            resetOnboarding()
+//                        }
+//                        .padding()
+//                        .background(Color.gardenGreen)
+//                        .foregroundColor(.white)
+//                        .cornerRadius(8)
+//                    }
+//                }
+//            }
 
             if let e = error {
                 Text(e)

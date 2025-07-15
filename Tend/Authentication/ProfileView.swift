@@ -20,7 +20,7 @@ struct ProfileView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Profile")
                             .font(.largeTitle.bold())
-                            .foregroundColor(.textPrimary)
+//                            .foregroundColor(.textPrimary)
 
                         Group {
                             InputField(title: "Username", text: $username)
@@ -30,7 +30,7 @@ struct ProfileView: View {
 
                         if isLoading {
                             ProgressView()
-                                .tint(.gardenGreen)
+//                                .tint(.gardenGreen)
                         }
 
                         Button(action: updateProfileButtonTapped) {
@@ -38,8 +38,8 @@ struct ProfileView: View {
                                 .font(.headline)
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.gardenGreen)
-                                .foregroundColor(.white)
+//                                .background(Color.gardenGreen)
+//                                .foregroundColor(.white)
                                 .cornerRadius(0)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 0)
@@ -72,7 +72,7 @@ struct ProfileView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 30)
             }
-            .background(Color.surfaceGray.ignoresSafeArea())
+//            .background(Color.surfaceGray.ignoresSafeArea())
         }
         .task {
             await getInitialProfile()
@@ -135,11 +135,11 @@ struct InputField: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title)
                 .font(.subheadline.bold())
-                .foregroundColor(.textPrimary)
+//                .foregroundColor(.textPrimary)
             
             TextField("", text: $text)
                 .padding(10)
-                .background(Color.backgroundWhite)
+//                .background(Color.backgroundWhite)
                 .overlay(
                     Rectangle()
                         .stroke(Color.black, lineWidth: 1.5)

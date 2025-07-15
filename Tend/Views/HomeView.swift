@@ -50,7 +50,7 @@ struct HomeView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.gardenGreen)
+//                .background(Color.gardenGreen)
                 .foregroundColor(.white)
                 .cornerRadius(8)
                 .padding([.leading, .trailing, .bottom])

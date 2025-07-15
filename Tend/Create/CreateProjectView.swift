@@ -40,7 +40,7 @@ struct CreateProjectView: View {
                     .bold()
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(isLoading ? Color.gray : Color.gardenGreen)
+//                    .background(isLoading ? Color.gray : Color.gardenGreen)
                     .foregroundColor(.white)
                     .cornerRadius(8)
             }

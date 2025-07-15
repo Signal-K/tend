@@ -15,9 +15,9 @@ struct BottomNavigation: View {
                     Label("Home", systemImage: "house.fill")
                 }
 
-            NotesView()
+            FocusSessionView()
                 .tabItem {
-                    Label("Notes", systemImage: "note.text")
+                    Label("Focus", systemImage: "note.text")
                 }
 
             ArchiveView()
@@ -30,7 +30,7 @@ struct BottomNavigation: View {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
         }
-        .accentColor(.gardenGreen)
+//        .accentColor(.gardenGreen)
     }
 }
 

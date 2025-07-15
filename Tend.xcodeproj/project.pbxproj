@@ -34,6 +34,14 @@
 		B538AA8F2E02806700D2E018 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA8E2E02806700D2E018 /* HomeView.swift */; };
 		B538AA912E0283FD00D2E018 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA902E0283FD00D2E018 /* ArchiveView.swift */; };
 		B538AA942E0317E800D2E018 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538AA932E0317E800D2E018 /* ProjectDetailView.swift */; };
+		B56AC4022E2627C500979632 /* FocusMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4012E2627C300979632 /* FocusMode.swift */; };
+		B56AC4052E262AAC00979632 /* NeuStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4042E262AAA00979632 /* NeuStyle.swift */; };
+		B56AC4072E262BFF00979632 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4062E262BFE00979632 /* Focus.swift */; };
+		B56AC4092E262DC700979632 /* CategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4082E262DC400979632 /* CategoryPicker.swift */; };
+		B56AC40C2E262DE700979632 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC40B2E262DE400979632 /* TodoListView.swift */; };
+		B56AC40E2E262DFF00979632 /* SessionTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC40D2E262DFD00979632 /* SessionTimer.swift */; };
+		B56AC4102E262E0900979632 /* EndSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC40F2E262E0700979632 /* EndSession.swift */; };
+		B56AC4122E262E1500979632 /* PreviousSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4112E262E1300979632 /* PreviousSessions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +86,14 @@
 		B538AA8E2E02806700D2E018 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B538AA902E0283FD00D2E018 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		B538AA932E0317E800D2E018 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
+		B56AC4012E2627C300979632 /* FocusMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusMode.swift; sourceTree = "<group>"; };
+		B56AC4042E262AAA00979632 /* NeuStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuStyle.swift; sourceTree = "<group>"; };
+		B56AC4062E262BFE00979632 /* Focus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
+		B56AC4082E262DC400979632 /* CategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPicker.swift; sourceTree = "<group>"; };
+		B56AC40B2E262DE400979632 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		B56AC40D2E262DFD00979632 /* SessionTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTimer.swift; sourceTree = "<group>"; };
+		B56AC40F2E262E0700979632 /* EndSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSession.swift; sourceTree = "<group>"; };
+		B56AC4112E262E1300979632 /* PreviousSessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSessions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +151,8 @@
 		B538AA2B2E0217BF00D2E018 /* Tend */ = {
 			isa = PBXGroup;
 			children = (
+				B56AC40A2E262DDD00979632 /* Todos */,
+				B56AC4032E262AA400979632 /* UICommon */,
 				B538AA892E02779F00D2E018 /* Layout */,
 				B538AA822E02747700D2E018 /* Create */,
 				B538AA7D2E02208100D2E018 /* Views */,
@@ -193,6 +211,7 @@
 		B538AA7A2E02205C00D2E018 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B56AC4062E262BFE00979632 /* Focus.swift */,
 				B538AA7B2E02206400D2E018 /* Models.swift */,
 			);
 			path = Models;
@@ -201,6 +220,7 @@
 		B538AA7D2E02208100D2E018 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B56AC4002E2627C000979632 /* Focus */,
 				B538AA922E0317DE00D2E018 /* Projects */,
 				B538AA7E2E02208900D2E018 /* AppView.swift */,
 				B538AA802E02237A00D2E018 /* OnboardingView.swift */,
@@ -213,6 +233,7 @@
 		B538AA822E02747700D2E018 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				B56AC4082E262DC400979632 /* CategoryPicker.swift */,
 				B538AA832E0274A000D2E018 /* CreateProjectView.swift */,
 				B538AA852E02758F00D2E018 /* CreateTaskGroupView.swift */,
 				B538AA872E0275AC00D2E018 /* CreateTaskView.swift */,
@@ -235,6 +256,33 @@
 				B538AA932E0317E800D2E018 /* ProjectDetailView.swift */,
 			);
 			path = Projects;
+			sourceTree = "<group>";
+		};
+		B56AC4002E2627C000979632 /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				B56AC4112E262E1300979632 /* PreviousSessions.swift */,
+				B56AC40F2E262E0700979632 /* EndSession.swift */,
+				B56AC40D2E262DFD00979632 /* SessionTimer.swift */,
+				B56AC4012E2627C300979632 /* FocusMode.swift */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+		B56AC4032E262AA400979632 /* UICommon */ = {
+			isa = PBXGroup;
+			children = (
+				B56AC4042E262AAA00979632 /* NeuStyle.swift */,
+			);
+			path = UICommon;
+			sourceTree = "<group>";
+		};
+		B56AC40A2E262DDD00979632 /* Todos */ = {
+			isa = PBXGroup;
+			children = (
+				B56AC40B2E262DE400979632 /* TodoListView.swift */,
+			);
+			path = Todos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,11 +429,18 @@
 			files = (
 				B538AA842E0274A000D2E018 /* CreateProjectView.swift in Sources */,
 				B538AA8F2E02806700D2E018 /* HomeView.swift in Sources */,
+				B56AC40E2E262DFF00979632 /* SessionTimer.swift in Sources */,
+				B56AC4072E262BFF00979632 /* Focus.swift in Sources */,
+				B56AC4052E262AAC00979632 /* NeuStyle.swift in Sources */,
+				B56AC4122E262E1500979632 /* PreviousSessions.swift in Sources */,
 				B538AA862E02758F00D2E018 /* CreateTaskGroupView.swift in Sources */,
 				B538AA8B2E0277AD00D2E018 /* BottomNavigation.swift in Sources */,
 				B538AA6E2E02199600D2E018 /* Supabase.swift in Sources */,
+				B56AC4092E262DC700979632 /* CategoryPicker.swift in Sources */,
 				B538AA772E021CCD00D2E018 /* Theme.swift in Sources */,
+				B56AC4022E2627C500979632 /* FocusMode.swift in Sources */,
 				B538AA752E021B1300D2E018 /* AuthView.swift in Sources */,
+				B56AC40C2E262DE700979632 /* TodoListView.swift in Sources */,
 				B538AA942E0317E800D2E018 /* ProjectDetailView.swift in Sources */,
 				B538AA912E0283FD00D2E018 /* ArchiveView.swift in Sources */,
 				B538AA7F2E02208900D2E018 /* AppView.swift in Sources */,
@@ -393,6 +448,7 @@
 				B538AA812E02237A00D2E018 /* OnboardingView.swift in Sources */,
 				B538AA882E0275AC00D2E018 /* CreateTaskView.swift in Sources */,
 				B538AA2D2E0217BF00D2E018 /* TendApp.swift in Sources */,
+				B56AC4102E262E0900979632 /* EndSession.swift in Sources */,
 				B538AA8D2E02787300D2E018 /* Tests.swift in Sources */,
 				B538AA7C2E02206400D2E018 /* Models.swift in Sources */,
 			);

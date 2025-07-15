@@ -15,7 +15,8 @@ struct AppView: View {
             if isAuthenticated {
                 BottomNavigation()
             } else {
-                AuthView()
+//                AuthView()
+                BottomNavigation()
             }
         }
         .task {
