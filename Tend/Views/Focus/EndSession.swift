@@ -10,29 +10,16 @@ import SwiftUI
 struct EndSessionSheetView: View {
     @Binding var elapsedFocusTime: TimeInterval
     @Binding var elapsedBreakTime: TimeInterval
-    @Binding var todos: [String]
-    @Binding var completedTasks: [String]
+    @Binding var todos: [Todo]
+    
+    @Binding var completedTasks: [Todo] // For session summary, optional to keep
+    
     @Binding var newCompletedTask: String
     
     @AppStorage("persistedTodos", store: .standard) private var persistedTodosData: Data = Data()
-    @AppStorage("completedTodos", store: .standard) private var completedTodosData: Data = Data()
     
     let endSessionAction: () -> Void
     
-    @State private var selectedTasks: Set<String> = []
-
-    private var allPersistedTodos: [String] {
-        (try? JSONDecoder().decode([String].self, from: persistedTodosData)) ?? []
-    }
-
-    private var completedSet: Set<String> {
-        Set((try? JSONDecoder().decode([String].self, from: completedTodosData)) ?? [])
-    }
-
-    private var incompletePersistedTodos: [String] {
-        allPersistedTodos.filter { !completedSet.contains($0) }
-    }
-
     var body: some View {
         NavigationView {
             VStack(spacing: 12) {
@@ -47,35 +34,24 @@ struct EndSessionSheetView: View {
                 
                 List {
                     Section("Tasks from This Session") {
-                        ForEach(todos, id: \.self) { todo in
-                            Text(todo)
-                        }
-                    }
-                    
-                    Section("Mark Completed Tasks") {
-                        if incompletePersistedTodos.isEmpty {
-                            Text("No incomplete tasks to mark.")
-                                .foregroundColor(.secondary)
-                        } else {
-                            ForEach(incompletePersistedTodos, id: \.self) { task in
-                                Button(action: {
-                                    toggleTask(task)
-                                }) {
-                                    HStack {
-                                        Image(systemName: selectedTasks.contains(task) ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(selectedTasks.contains(task) ? .green : .gray)
-                                        Text(task)
-                                            .foregroundColor(.primary)
-                                    }
-                                }
+                        ForEach(todos) { todo in
+                            HStack {
+                                Image(systemName: todo.completed ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(todo.completed ? .green : .gray)
+                                Text(todo.title)
+                            }
+                            .contentShape(Rectangle()) // To make entire row tappable
+                            .onTapGesture {
+                                toggleCompletion(todo)
                             }
                         }
                     }
                 }
                 
                 Button(action: {
-                    completedTasks = Array(selectedTasks)
-                    saveCompletedTasks()
+                    // Update completedTasks to todos where completed = true
+                    completedTasks = todos.filter { $0.completed }
+                    saveTodos()
                     endSessionAction()
                 }) {
                     Text("Save Session")
@@ -89,31 +65,22 @@ struct EndSessionSheetView: View {
                 }
                 .padding()
             }
-            .onAppear {
-                selectedTasks = Set(completedTasks)
-            }
             .navigationTitle("End Focus Session")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-
-    private func toggleTask(_ task: String) {
-        if selectedTasks.contains(task) {
-            selectedTasks.remove(task)
-        } else {
-            selectedTasks.insert(task)
+    
+    private func toggleCompletion(_ todo: Todo) {
+        guard let index = todos.firstIndex(where: { $0.id == todo.id }) else { return }
+        todos[index].completed.toggle()
+    }
+    
+    private func saveTodos() {
+        if let encoded = try? JSONEncoder().encode(todos) {
+            persistedTodosData = encoded
         }
     }
-
-    private func saveCompletedTasks() {
-        var existingCompleted = (try? JSONDecoder().decode([String].self, from: completedTodosData)) ?? []
-        existingCompleted.append(contentsOf: selectedTasks.filter { !existingCompleted.contains($0) })
-
-        if let encoded = try? JSONEncoder().encode(existingCompleted) {
-            completedTodosData = encoded
-        }
-    }
-
+    
     private func formatTime(_ interval: TimeInterval) -> String {
         let intSec = Int(interval)
         let m = intSec / 60

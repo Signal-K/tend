@@ -12,7 +12,7 @@ struct FocusSessionView: View {
     @State private var selectedCategory: String = "Work"
     @State private var newCategoryName: String = ""
     
-    @State private var todos: [String] = []
+    @State private var todos: [Todo] = []
     @State private var newTodo: String = ""
     
     @State private var elapsedFocusTime: TimeInterval = 0
@@ -33,6 +33,9 @@ struct FocusSessionView: View {
     
     // Timer
     @State private var timer: Timer? = nil
+    
+    // Store completed tasks selected at session end
+    @State private var sessionCompletedTasks: [Todo] = []
     
     func startTimer() {
         timer?.invalidate()
@@ -62,7 +65,8 @@ struct FocusSessionView: View {
     func addTodo() {
         let trimmed = newTodo.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
-        todos.append(trimmed)
+        let newTodoItem = Todo(title: trimmed, category: selectedCategory)
+        todos.append(newTodoItem)
         saveTodosToStorage()
         newTodo = ""
     }
@@ -74,7 +78,7 @@ struct FocusSessionView: View {
     }
     
     func loadTodosFromStorage() {
-        if let decoded = try? JSONDecoder().decode([String].self, from: persistedTodosData) {
+        if let decoded = try? JSONDecoder().decode([Todo].self, from: persistedTodosData) {
             todos = decoded
         }
     }
@@ -116,7 +120,7 @@ struct FocusSessionView: View {
         showEndSessionSheet = true
     }
     
-    func saveSession(completedTasks: [String]) {
+    func saveSession(completedTasks: [Todo]) {
         var categoryTimes = [String: TimeInterval]()
         categoryTimes[selectedCategory] = elapsedFocusTime
         
@@ -125,13 +129,13 @@ struct FocusSessionView: View {
             date: Date(),
             categoryTimes: categoryTimes,
             breakTime: elapsedBreakTime,
-            todos: todos,
-            completedTodos: completedTasks
+            todos: todos.map { $0.title },                 // convert todos to [String]
+            completedTodos: completedTasks.map { $0.title } // convert completedTasks to [String]
         )
         previousSessions.append(newSession)
         saveSessionsToStorage()
         
-        // Reset
+        // Reset session state
         elapsedFocusTime = 0
         elapsedBreakTime = 0
         todos.removeAll()
@@ -140,8 +144,6 @@ struct FocusSessionView: View {
         showEndSessionSheet = false
     }
     
-    // MARK: View
-    
     var body: some View {
         ZStack {
             Color.backgroundColor
@@ -149,7 +151,6 @@ struct FocusSessionView: View {
             
             VStack(spacing: 16) {
                 if isSessionActive {
-                    // Show only current session UI
                     SessionTimerView(
                         currentCategory: $selectedCategory,
                         categories: categories,
@@ -160,17 +161,13 @@ struct FocusSessionView: View {
                         endSessionAction: endSession
                     )
                 } else {
-                    // Show full UI when no session is active
                     CategoryPickerView(
                         categories: $categories,
                         selectedCategory: $selectedCategory,
                         newCategoryName: $newCategoryName,
-                        addCategoryAction: addCategory
-                    )
-                    
-                    TodoListView(
                         todos: $todos,
                         newTodo: $newTodo,
+                        addCategoryAction: addCategory,
                         addTodoAction: addTodo
                     )
                     
@@ -201,19 +198,20 @@ struct FocusSessionView: View {
             loadCategoriesFromStorage()
         }
         .sheet(isPresented: $showEndSessionSheet) {
+            // Pass completedTasks binding so EndSessionSheetView can update it
             EndSessionSheetView(
                 elapsedFocusTime: $elapsedFocusTime,
                 elapsedBreakTime: $elapsedBreakTime,
                 todos: $todos,
-                completedTasks: .constant([]),
+                completedTasks: $sessionCompletedTasks,
                 newCompletedTask: .constant(""),
                 endSessionAction: {
-                    saveSession(completedTasks: [])
+                    saveSession(completedTasks: sessionCompletedTasks)
                 }
             )
         }
         .sheet(isPresented: $showPreviousSessionsSheet) {
-            PreviousSessionsSheetView(sessions: previousSessions, isPresented: $showPreviousSessionsSheet)
+            PreviousSessionsSheetView(isPresented: $showPreviousSessionsSheet)
         }
     }
 }

@@ -32,8 +32,25 @@ struct ArchiveView: View {
     @State private var projects: [ArchiveProject] = []
     @State private var groups: [ArchiveGroup] = []
     @State private var tasks: [ArchiveTask] = []
+    @State private var focusSessions: [FocusSession] = []
+
     @State private var isLoading = false
     @State private var errorMessage: String?
+
+    private var totalFocusTime: TimeInterval {
+        focusSessions.reduce(0) { $0 + $1.categoryTimes.values.reduce(0, +) }
+    }
+
+    private var totalBreakTime: TimeInterval {
+        focusSessions.reduce(0) { $0 + $1.breakTime }
+    }
+
+    private func formatTime(_ interval: TimeInterval) -> String {
+        let totalMinutes = Int(interval) / 60
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        return hours > 0 ? "\(hours)h \(minutes)m" : "\(minutes)m"
+    }
 
     var body: some View {
         NavigationStack {
@@ -54,12 +71,81 @@ struct ArchiveView: View {
                         .buttonStyle(.bordered)
                     }
                     .padding()
-                } else if projects.isEmpty {
+                } else if projects.isEmpty && focusSessions.isEmpty {
                     Text("No archive data found.")
                         .foregroundColor(.secondary)
                         .padding()
                 } else {
                     VStack(alignment: .leading, spacing: 24) {
+                        // New Focus Sessions Section at the top
+                        if !focusSessions.isEmpty {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Focus Sessions")
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.horizontal)
+
+                                ForEach(focusSessions.sorted(by: { $0.date > $1.date })) { session in
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text(session.date, style: .date)
+                                            .font(.headline)
+
+                                        // Category times
+                                        ForEach(session.categoryTimes.sorted(by: { $0.key < $1.key }), id: \.key) { category, time in
+                                            HStack {
+                                                Text(category.capitalized)
+                                                Spacer()
+                                                Text(formatTime(time))
+                                            }
+                                            .font(.subheadline)
+                                        }
+
+                                        HStack {
+                                            Text("Break Time")
+                                            Spacer()
+                                            Text(formatTime(session.breakTime))
+                                        }
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+
+                                        if !session.todos.isEmpty {
+                                            Text("Todos: " + session.todos.joined(separator: ", "))
+                                                .font(.footnote)
+                                                .foregroundColor(.primary)
+                                                .lineLimit(1)
+                                                .truncationMode(.tail)
+                                        }
+
+                                        if !session.completedTodos.isEmpty {
+                                            Text("Completed: " + session.completedTodos.joined(separator: ", "))
+                                                .font(.footnote)
+                                                .foregroundColor(.green)
+                                                .lineLimit(1)
+                                                .truncationMode(.tail)
+                                        }
+                                    }
+                                    .padding()
+                                    .background(Color(UIColor.systemGray6))
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                                }
+
+                                // Totals
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text("Total Focus Time: \(formatTime(totalFocusTime))")
+                                        .font(.headline)
+                                    Text("Total Break Time: \(formatTime(totalBreakTime))")
+                                        .font(.headline)
+                                }
+                                .padding(.horizontal)
+                                .padding(.top, 8)
+                            }
+                            Divider()
+                                .padding(.vertical)
+                        }
+
+                        // Existing Projects & Groups & Tasks display
+
                         ForEach(projects) { project in
                             NavigationLink(destination: ProjectDetailView(project: project)) {
                                 VStack(alignment: .leading, spacing: 12) {
@@ -120,7 +206,7 @@ struct ArchiveView: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    .padding()
+                    .padding(.vertical)
                 }
             }
             .navigationTitle("Archive")
@@ -140,6 +226,7 @@ struct ArchiveView: View {
         projects = []
         groups = []
         tasks = []
+        focusSessions = []
 
         do {
             projects = try await supabase
@@ -162,6 +249,15 @@ struct ArchiveView: View {
                 .order("title", ascending: true)
                 .execute()
                 .value
+
+            // Load focus sessions from supabase table "focus_sessions"
+            focusSessions = try await supabase
+                .from("focus_sessions")
+                .select("id,date,categoryTimes,breakTime,todos,completedTodos")
+                .order("date", ascending: false)
+                .execute()
+                .value
+                ?? []
 
         } catch {
             errorMessage = error.localizedDescription

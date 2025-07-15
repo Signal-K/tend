@@ -17,3 +17,17 @@ struct FocusSession: Identifiable, Codable {
     var todos: [String]
     var completedTodos: [String]
 }
+
+struct Todo: Codable, Identifiable, Hashable {
+    let id: UUID
+    var title: String
+    var category: String
+    var completed: Bool = false
+    
+    init(id: UUID = UUID(), title: String, category: String, completed: Bool = false) {
+        self.id = id
+        self.title = title
+        self.category = category
+        self.completed = completed
+    }
+}

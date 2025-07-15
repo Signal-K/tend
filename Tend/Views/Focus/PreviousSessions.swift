@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct PreviousSessionsSheetView: View {
-    let sessions: [FocusSession]
     @Binding var isPresented: Bool
+    
+    @AppStorage("previousSessions") private var previousSessionsData: Data = Data()
+    @State private var sessions: [FocusSession] = []
     
     var body: some View {
         NavigationView {
@@ -35,6 +37,13 @@ struct PreviousSessionsSheetView: View {
             .navigationBarItems(trailing: Button("Done") {
                 isPresented = false
             })
+            .onAppear(perform: loadSessionsFromStorage)
+        }
+    }
+    
+    private func loadSessionsFromStorage() {
+        if let decoded = try? JSONDecoder().decode([FocusSession].self, from: previousSessionsData) {
+            sessions = decoded
         }
     }
     
