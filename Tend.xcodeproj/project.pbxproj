@@ -42,6 +42,7 @@
 		B56AC40E2E262DFF00979632 /* SessionTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC40D2E262DFD00979632 /* SessionTimer.swift */; };
 		B56AC4102E262E0900979632 /* EndSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC40F2E262E0700979632 /* EndSession.swift */; };
 		B56AC4122E262E1500979632 /* PreviousSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4112E262E1300979632 /* PreviousSessions.swift */; };
+		B56AC4142E26359100979632 /* TodoArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AC4132E26358F00979632 /* TodoArchive.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		B56AC40D2E262DFD00979632 /* SessionTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTimer.swift; sourceTree = "<group>"; };
 		B56AC40F2E262E0700979632 /* EndSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSession.swift; sourceTree = "<group>"; };
 		B56AC4112E262E1300979632 /* PreviousSessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSessions.swift; sourceTree = "<group>"; };
+		B56AC4132E26358F00979632 /* TodoArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoArchive.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 		B56AC40A2E262DDD00979632 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
+				B56AC4132E26358F00979632 /* TodoArchive.swift */,
 				B56AC40B2E262DE400979632 /* TodoListView.swift */,
 			);
 			path = Todos;
@@ -431,6 +434,7 @@
 				B538AA8F2E02806700D2E018 /* HomeView.swift in Sources */,
 				B56AC40E2E262DFF00979632 /* SessionTimer.swift in Sources */,
 				B56AC4072E262BFF00979632 /* Focus.swift in Sources */,
+				B56AC4142E26359100979632 /* TodoArchive.swift in Sources */,
 				B56AC4052E262AAC00979632 /* NeuStyle.swift in Sources */,
 				B56AC4122E262E1500979632 /* PreviousSessions.swift in Sources */,
 				B538AA862E02758F00D2E018 /* CreateTaskGroupView.swift in Sources */,

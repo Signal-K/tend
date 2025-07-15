@@ -10,9 +10,10 @@ import SwiftUI
 struct BottomNavigation: View {
     var body: some View {
         TabView {
-            HomeView()
+//            HomeView()
+            ArchiveTasksView()
                 .tabItem {
-                    Label("Home", systemImage: "house.fill")
+                    Label("Tasks", systemImage: "house.fill")
                 }
 
             FocusSessionView()

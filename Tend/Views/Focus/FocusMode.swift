@@ -26,6 +26,11 @@ struct FocusSessionView: View {
     
     @State private var isSessionActive: Bool = false
     
+    // Persisted todos, sessions, and categories in UserDefaults
+    @AppStorage("persistedTodos") private var persistedTodosData: Data = Data()
+    @AppStorage("previousSessions") private var previousSessionsData: Data = Data()
+    @AppStorage("persistedCategories") private var persistedCategoriesData: Data = Data()
+    
     // Timer
     @State private var timer: Timer? = nil
     
@@ -51,13 +56,54 @@ struct FocusSessionView: View {
         categories.append(trimmed)
         selectedCategory = trimmed
         newCategoryName = ""
+        saveCategoriesToStorage()
     }
     
     func addTodo() {
         let trimmed = newTodo.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
         todos.append(trimmed)
+        saveTodosToStorage()
         newTodo = ""
+    }
+    
+    func saveTodosToStorage() {
+        if let encoded = try? JSONEncoder().encode(todos) {
+            persistedTodosData = encoded
+        }
+    }
+    
+    func loadTodosFromStorage() {
+        if let decoded = try? JSONDecoder().decode([String].self, from: persistedTodosData) {
+            todos = decoded
+        }
+    }
+    
+    func saveSessionsToStorage() {
+        if let encoded = try? JSONEncoder().encode(previousSessions) {
+            previousSessionsData = encoded
+        }
+    }
+    
+    func loadSessionsFromStorage() {
+        if let decoded = try? JSONDecoder().decode([FocusSession].self, from: previousSessionsData) {
+            previousSessions = decoded
+        }
+    }
+    
+    func saveCategoriesToStorage() {
+        if let encoded = try? JSONEncoder().encode(categories) {
+            persistedCategoriesData = encoded
+        }
+    }
+    
+    func loadCategoriesFromStorage() {
+        if let decoded = try? JSONDecoder().decode([String].self, from: persistedCategoriesData) {
+            categories = decoded
+            if !categories.contains(selectedCategory), let first = categories.first {
+                selectedCategory = first
+            }
+        }
     }
     
     func toggleBreak() {
@@ -83,11 +129,13 @@ struct FocusSessionView: View {
             completedTodos: completedTasks
         )
         previousSessions.append(newSession)
+        saveSessionsToStorage()
         
         // Reset
         elapsedFocusTime = 0
         elapsedBreakTime = 0
         todos.removeAll()
+        saveTodosToStorage()
         isOnBreak = false
         showEndSessionSheet = false
     }
@@ -146,6 +194,11 @@ struct FocusSessionView: View {
                 .foregroundColor(.primaryColor)
             }
             .padding()
+        }
+        .onAppear {
+            loadTodosFromStorage()
+            loadSessionsFromStorage()
+            loadCategoriesFromStorage()
         }
         .sheet(isPresented: $showEndSessionSheet) {
             EndSessionSheetView(
